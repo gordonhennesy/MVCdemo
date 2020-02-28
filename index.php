@@ -11,7 +11,8 @@
    $search_name = $_GET['name'];
    $action_name = $_GET['search'];
 
-	echo "MVC Demo Gordon Hennesy 2-26-2020$this_page : $root_dir<br>";
+	echo "MVC Demo Gordon Hennesy 2-26-2020<br>";
+	//echo "MVC Demo Gordon Hennesy 2-26-2020$this_page : $root_dir<br>";
 	
 	$controller = new NameController();
 	$controller->render();

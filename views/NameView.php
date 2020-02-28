@@ -1,17 +1,17 @@
 <?PHP
 	$root_dir = dirname($_SERVER['SCRIPT_FILENAME']);
 //   require_once ("Controller.php");
-echo "$root_dir<br>";
+//echo "$root_dir<br>";
 	include_once $root_dir . "/views/View.php";
 	include_once $root_dir . "/models/NameModel.php";
-	include_once $root_dir . "/style.css";
+//	include_once $root_dir . "/style.css";
 
 	class NameView extends View {
 
 		
 		function __construct() {
 			$this->model = new NameModel();
-			echo "Construct NAMEVIEW<br>";
+			//echo "Construct NAMEVIEW<br>";
 		}
 		function print() {
 			echo "print NAMEVIEW<br>";
@@ -90,7 +90,7 @@ echo "$root_dir<br>";
 				<table align=center>
 				<form>
 				Search Name<input type = text name=name value="<?php $search_name ?>">
-				<tr><td><input type=submit name=search value="Seaarch">
+				<tr><td><input type=submit name=search value="Search">
 				<input type=submit name=reset value="Reset">
 				</td></tr>
 				</form>

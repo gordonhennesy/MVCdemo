@@ -4,7 +4,7 @@
 	include_once $root_dir . "/views/NameView.php";
 	class NameController extends Controller {
 		function __construct() {
-			echo "Construct NAME Controller<br>";	
+			//echo "Construct NAME Controller<br>";	
 			$this->view = new NameView();
 		}
 		function print() {
@@ -18,6 +18,8 @@
    		echo "$action_edit<br>";
    		$action_dup = $_GET['Duplicate'];
    		$action_save = $_GET['Save'];
+   		$address = $_GET['address'];
+   		$notes = $_GET['notes'];
    		if ($action_edit) {
    			$edit_name_arr = explode('Edit ',$action_edit);
    			$edit_name = $edit_name_arr[1];
@@ -34,11 +36,11 @@
    			$save_name_arr = explode('SAVE ',$action_save);
    			$save_name = $save_name_arr[1];
    			$save_name = trim($save_name);
-   		echo "DUP NAME $duplicate_name<br>";
+   		//echo "Save NAME $save_name<br>";
   			}
    		$action_compare = $_GET['Compare'];
 
-			echo "render Name Controller $search_name<br>";	
+			//echo "render Name Controller $search_name<br>";	
 			$this->view->render_search($search_name);
 			$this->view->render($search_name, $edit_name, $duplicate_name);
 		}
