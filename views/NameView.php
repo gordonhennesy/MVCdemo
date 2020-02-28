@@ -46,7 +46,7 @@ echo "$root_dir<br>";
 				//echo "<td>$name_value $edit_name</td>;"
 				if ($name_value == $edit_name) {
 				echo "<td><input type=submit 
-				name=Edit 
+				name=Save 
 				value=\"Save {$row['name']}\"></td>";
 				} else {
 				echo "<td><input type=submit 
@@ -55,7 +55,7 @@ echo "$root_dir<br>";
 				}
 				foreach($row as $name=>$value) {
 					if ($name_value == $edit_name) {
-						echo "<td><input name=name value=$value></td>";
+						echo "<td><input name=$name value=$value></td>";
 					} else {
 						echo "<td>$value</td>";
 					}
