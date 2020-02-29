@@ -15,7 +15,7 @@
 		   $search_name = $_GET['name'];
    		$action_name = $_GET['search'];
    		$action_edit = $_GET['Edit'];
-   		echo "$action_edit<br>";
+   		//echo "$action_edit<br>";
    		$action_dup = $_GET['Duplicate'];
    		$action_save = $_GET['Save'];
    		$address = $_GET['address'];
@@ -24,13 +24,13 @@
    			$edit_name_arr = explode('Edit ',$action_edit);
    			$edit_name = $edit_name_arr[1];
    			$edit_name = trim($edit_name);
-   		echo "EDIT NAME $edit_name<br>";
+   		//echo "EDIT NAME $edit_name<br>";
   			}
    		if ($action_dup) {
    			$duplicate_name_arr = explode('Duplicate ',$action_dup);
    			$duplicate_name = $duplicate_name_arr[1];
    			$duplicate_name = trim($duplicate_name);
-   		echo "DUP NAME $duplicate_name<br>";
+   		//echo "DUP NAME $duplicate_name<br>";
   			}
   			if ($action_save) {
    			$save_name_arr = explode('SAVE ',$action_save);

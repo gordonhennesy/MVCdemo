@@ -20,8 +20,8 @@
 		function render($name, $edit_name, $duplicate_name) {
 			//echo "print NAMEVIEW<br>";
 			$search_name = trim($name);
-			echo "$edit_name<br>";
-			echo "$duplicate_name<br>";
+			//echo "$edit_name<br>";
+			//echo "$duplicate_name<br>";
 			$values = $this->model->get($search_name);
 			//print_r($values);
 			?>
