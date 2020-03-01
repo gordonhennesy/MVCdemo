@@ -22,7 +22,7 @@
 			$action_edit = $_GET['Edit'];
 			//echo "$action_edit<br>";
 			$action_dup = $_GET['Duplicate'];
-		echo "Controller render2<br>";
+//		echo "Controller render2<br>";
 			$action_save = $_GET['Save'];
 			$action_insert = $_GET['Insert'];
 			$address = $_GET['address'];
@@ -30,32 +30,32 @@
 			$values = array();
 			$values['address']=$address;
 			$values['notes']=$notes;
-		echo "Controller render3<br>";
+//		echo "Controller render3<br>";
 			if ($action_edit) {
-		echo "Controller edit<br>";
+//		echo "Controller edit<br>";
 
 				$edit_name_arr = explode('Edit ',$action_edit);
 				$edit_name = $edit_name_arr[1];
 				$edit_name = trim($edit_name);
 			//echo "EDIT NAME $edit_name<br>";
   			}
-		echo "Controller after edit<br>";
+//		echo "Controller after edit<br>";
 
 			if ($action_dup) {
-echo "Dup1<br>";
+//echo "Dup1<br>";
 				$duplicate_name_arr = explode('Duplicate ',$action_dup);
 				$duplicate_name = $duplicate_name_arr[1];
 				$duplicate_name = trim($duplicate_name);
-   				echo "DUP NAME $duplicate_name<br>";
+ //  				echo "DUP NAME $duplicate_name<br>";
    				$old_name =$search_name;
-   				echo "OLD NAME $old_name<br>";
+ //  				echo "OLD NAME $old_name<br>";
    				//$ident = $random();
    				$new_name = $old_name;// . "$ident";
    				//$values['time_create']='';
    				//$values['name']='';
-   				print_r($values);
+  // 				print_r($values);
 				$this->model->duplicate($old_name, $new_name, $values);
-echo "Dup2<br>";
+//echo "Dup2<br>";
   			}
   			if ($action_insert) {
   			}
