@@ -32,7 +32,6 @@
 			foreach($values as $row) {
 				?>
 				<tr>
-				<th>
 				<?php
 				foreach($row as $name=>$value) {
 					echo "<th style=\"1px solid black;\">$name</th>";
@@ -102,5 +101,47 @@
 				<?php
 //			echo "HERE Name NAMEVIEW$root_dir<br>";
 		}
-	}
+		function render_insert() {
+			//echo "INERSET<br>";
+			$values = $this->model->get();
+			//print_r($values);
+			//echo "get<br>";
 			?>
+			<table align=center>
+			<form name=EditNames border=1>
+			<?php
+				$index = 0;
+			//foreach($values as $row) {
+			$row = $values[0];
+				?>
+				<tr>
+				<th></th>
+				<?php
+				foreach($row as $name=>$value) {
+					echo "<th style=\"1px solid black;\">$name</th>";
+				}
+				//}
+				?>
+				</tr>
+				<?php
+				echo "<td><input type=submit 
+				name=Save 
+				value=\"Save\"></td>";
+				foreach($row as $name=>$value) {
+						echo "<td><input name=$name value=''></td>";
+				}
+				//}
+				?>
+				<tr>
+				<td colspan=5 align=center>
+				<input type=submit 
+				name="Insert" 
+				value="New Row">
+				</td>
+				</tr>
+				</form>
+				</table>
+			<?php
+		}
+	}
+?>

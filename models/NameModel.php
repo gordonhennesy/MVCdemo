@@ -31,7 +31,7 @@
 		/**
 		 * Get (Read of CRUD)
 		 */
-		function get($search_name) {
+		function get($search_name='') {
 			//echo "get Name Model$search_name<br>";
 			if ($search_name != '') {
 				$where_clause = " WHERE name = '$search_name'";
@@ -39,6 +39,8 @@
 			} else {
 				$sql = "select * from ". $this->table .";";
 			}
+			//echo "$sql<br>";
+
 			$result = pg_query($this->conn, $sql);
 			//echo "$result<br>";
 			$values = array();

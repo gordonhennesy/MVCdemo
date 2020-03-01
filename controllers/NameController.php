@@ -14,9 +14,9 @@
 			$this->view->print();
 		}
 		function run() {
-		echo "Controller render<br>";
+		//echo "Controller render<br>";
 			$search_name = $_GET['name'];
-			   				echo "search NAME $search_name<br>";
+			//echo "search NAME $search_name<br>";
 
 			$action_name = $_GET['search'];
 			$action_edit = $_GET['Edit'];
@@ -58,6 +58,7 @@
 //echo "Dup2<br>";
   			}
   			if ($action_insert) {
+  			//echo "RENDER insert<br>";
   				$this->view->render_insert();
                 return;
   			}
