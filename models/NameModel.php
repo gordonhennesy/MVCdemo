@@ -126,8 +126,9 @@
 		/**
 		 * Delete (Delete of CRUD)
 		 */
-		function delete($old_name, $values) {
-			$sql = "DELETE FROM  ". $this->table ." SET ";
+		function delete($old_name) {
+			echo "DELETE NAME, <br>";
+			$sql = "DELETE FROM  ". $this->table ."";
 			$sql .= " WHERE name = '$old_name';";
 			//echo "SQL $sql<br>";
 			

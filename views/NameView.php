@@ -65,6 +65,9 @@
 				echo "<td><input type=submit 
 				name=Duplicate 
 				value=\"Duplicate {$row['name']}\"></td>";
+				echo "<td><input type=submit 
+				name=Delete 
+				value=\"Delete {$row['name']}\"></td>";
 				?>
 				</tr>
 				<?php
@@ -72,7 +75,7 @@
 			}
 			?>
 				<tr>
-				<td colspan=6 align=center>
+				<td colspan=7 align=center>
 				<input type=submit 
 				name="Insert" 
 				value="New Row">

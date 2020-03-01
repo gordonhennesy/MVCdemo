@@ -26,7 +26,10 @@
 			$action_save = $_GET['Save'];
 			$action_update = $_GET['Update'];
 			$action_insert = $_GET['Insert'];
+			$action_delete = $_GET['Delete'];
 			$address = $_GET['address'];
+		echo "Action delete $action_delete<br>";
+
 			$notes = $_GET['notes'];
 			$values = array();
 			$values['address']=$address;
@@ -74,12 +77,23 @@
   			}
   			if ($action_update) {
 				$update_name_arr = explode('UPDATE ',$action_update);
-				$update_name = $update_name[1];
+				$update_name = $update_name_arr[1];
 				$update_name = trim($update_name);
 				//echo "Save NAME $save_name<br>";
 		
 				$this->model->update($search_name,$values);
   			}
+   			if ($action_delete) {
+   			//echo "ACTION DETLET ; $action_delete<br>";
+				$delete_name_arr = explode('Delete ',$action_delete);
+				//print_r($delete_name_arr);
+				$delete_name = $delete_name_arr[1];
+				$delete_name = trim($delete_name);
+				//echo "DELETE NAME $delete_name<br>";
+   				$this->model->delete($delete_name);
+   			}
+
+  			
 			//echo "render Name Controller $search_name<br>";	
 			$this->view->render_search($search_name);
 			$this->view->render($search_name, $edit_name, $duplicate_name);
