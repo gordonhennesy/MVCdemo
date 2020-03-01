@@ -67,7 +67,21 @@
 			echo "SQL $sql<br>";
 			$result = pg_query($this->conn, $sql);
 		}
-		function duplicate($values, $new_name) {
+		function duplicate($old_name, $new_name, $values) {
+			$sql = "INSERT INTO ". $this->table ." ( name,";
+			foreach($values as $name=>$value) {
+				$sql .= " $name, ";
+			}
+			$sql .= " time_created) ";
+			$sql .= " SELECT '$new_name', ";
+			foreach($values as $name=>$value) {
+				$sql .= " '$value', ";
+			}
+			$sql .= " NOW() ";
+			$sql .= " from ". $this->table ."			 ";
+			$sql .= " WHERE name = '$old_name';";
+			echo "SQL $sql<br>";
+			$result = pg_query($this->conn, $sql);
 		}
 		/**
 		 * Save (Update of CRUD)
@@ -76,6 +90,7 @@
 			$sql = "UPDATE ". $this->table ." SET ";
 			foreach($values as $name=>$value) {
 				$sql .= " $name = '$value', ";
+//				echo " $name = '$value', <br>";
 			}
 			$sql .= " time_created = NOW() ";
 
