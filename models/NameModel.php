@@ -56,18 +56,24 @@
 		/**
 		 * Insert (Create of CRUD)
 		 */
-		function insert($values) {
+		function insert($insert_name, $values) {
 			$sql = "INSERT INTO ". $this->table ."(";
+			$sql .= "name, ";
 			foreach($values as $name=>$value) {
 				$sql .= " $name, ";
 			}
-			"values(";
+			$sql .= "time_created";
+			$sql .= ") ";
+			$sql .= "values(";
+			$sql .= " '$insert_name', ";
 			foreach($values as $name=>$value) {
 				$sql .= "  '$value', ";
 			}
+			$sql .= " NOW() ";
 			$sql .= " )";
 			echo "SQL $sql<br>";
 			$result = pg_query($this->conn, $sql);
+			return;
 		}
 		function duplicate($old_name, $new_name, $values) {
 			$sql = "INSERT INTO ". $this->table ." ( name,";
@@ -89,6 +95,22 @@
 		 * Save (Update of CRUD)
 		 */
 		function save($old_name, $values) {
+			$sql = "UPDATE ". $this->table ." SET ";
+			foreach($values as $name=>$value) {
+				$sql .= " $name = '$value', ";
+//				echo " $name = '$value', <br>";
+			}
+			$sql .= " time_created = NOW() ";
+
+			$sql .= " WHERE name = '$old_name';";
+			//echo "SQL $sql<br>";
+			
+			$result = pg_query($this->conn, $sql);
+		}
+		/**
+		 * Update (Update of CRUD)
+		 */
+		function update($old_name, $values) {
 			$sql = "UPDATE ". $this->table ." SET ";
 			foreach($values as $name=>$value) {
 				$sql .= " $name = '$value', ";

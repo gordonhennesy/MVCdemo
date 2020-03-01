@@ -32,6 +32,7 @@
 			foreach($values as $row) {
 				?>
 				<tr>
+				<th></th>
 				<?php
 				foreach($row as $name=>$value) {
 					echo "<th style=\"1px solid black;\">$name</th>";
@@ -45,8 +46,8 @@
 				//echo "<td>$name_value $edit_name</td>;"
 				if ($name_value == $edit_name) {
 				echo "<td><input type=submit 
-				name=Save 
-				value=\"Save {$row['name']}\"></td>";
+				name=Update 
+				value=\"Update {$row['name']}\"></td>";
 				} else {
 				echo "<td><input type=submit 
 				name=Edit 

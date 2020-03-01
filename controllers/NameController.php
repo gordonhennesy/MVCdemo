@@ -24,6 +24,7 @@
 			$action_dup = $_GET['Duplicate'];
 //		echo "Controller render2<br>";
 			$action_save = $_GET['Save'];
+			$action_update = $_GET['Update'];
 			$action_insert = $_GET['Insert'];
 			$address = $_GET['address'];
 			$notes = $_GET['notes'];
@@ -68,7 +69,16 @@
 				$save_name = trim($save_name);
 				//echo "Save NAME $save_name<br>";
 		
-				$this->model->save($search_name,$values);
+				//$this->model->save($search_name,$values);
+				$this->model->insert($search_name,$values);
+  			}
+  			if ($action_update) {
+				$update_name_arr = explode('UPDATE ',$action_update);
+				$update_name = $update_name[1];
+				$update_name = trim($update_name);
+				//echo "Save NAME $save_name<br>";
+		
+				$this->model->update($search_name,$values);
   			}
 			//echo "render Name Controller $search_name<br>";	
 			$this->view->render_search($search_name);
