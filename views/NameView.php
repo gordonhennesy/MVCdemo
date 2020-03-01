@@ -55,9 +55,11 @@
 				}
 				foreach($row as $name=>$value) {
 					if ($name_value == $edit_name) {
-						echo "<td><input name=$name value=$value></td>";
+						echo "<td><input name=$name value='$value'></td>";
+						//echo "value $value</br>";
 					} else {
-						echo "<td>$value</td>";
+						echo "<td><input name=$name value='$value' disabled=true></td>";
+						//echo "<td>$value</td>";
 					}
 				}
 				echo "<td><input type=submit 
