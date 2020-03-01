@@ -4,7 +4,10 @@
 	
 	class NameModel extends Model {
 //		var $model;
-		
+		/**
+		 * Get (Read of CRUD)
+		 * create, read, update, and delete
+		 */		
 		function __construct() {
 			$this->table = 'name';
 			//echo "Construct NameModel<br>";
@@ -25,6 +28,9 @@
 				}
 			}
 		}
+		/**
+		 * Get (Read of CRUD)
+		 */
 		function get($search_name) {
 			//echo "get Name Model$search_name<br>";
 			if ($search_name != '') {
@@ -45,20 +51,46 @@
 			//print_r($values);
 			return $values;
 		}
+		/**
+		 * Insert (Create of CRUD)
+		 */
 		function insert($values) {
-			$sql = "INSERT INTO ". $this->table ."values()";
+			$sql = "INSERT INTO ". $this->table ."(";
+			foreach($values as $name=>$value) {
+				$sql .= " $name, ";
+			}
+			"values(";
+			foreach($values as $name=>$value) {
+				$sql .= "  '$value', ";
+			}
+			$sql .= " )";
+			echo "SQL $sql<br>";
 			$result = pg_query($this->conn, $sql);
 		}
 		function duplicate($values, $new_name) {
 		}
+		/**
+		 * Save (Update of CRUD)
+		 */
 		function save($old_name, $values) {
 			$sql = "UPDATE ". $this->table ." SET ";
 			foreach($values as $name=>$value) {
-				$sql .= " $name = '$values' ";
+				$sql .= " $name = '$value', ";
 			}
+			$sql .= " time_created = NOW() ";
 
 			$sql .= " WHERE name = '$old_name';";
-			echo "SQL $sql<br>";
+			//echo "SQL $sql<br>";
+			
+			$result = pg_query($this->conn, $sql);
+		}
+		/**
+		 * Delete (Delete of CRUD)
+		 */
+		function delete($old_name, $values) {
+			$sql = "DELETE FROM  ". $this->table ." SET ";
+			$sql .= " WHERE name = '$old_name';";
+			//echo "SQL $sql<br>";
 			
 			$result = pg_query($this->conn, $sql);
 		}
