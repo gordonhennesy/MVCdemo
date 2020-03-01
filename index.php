@@ -17,6 +17,6 @@
 	//echo "MVC Demo Gordon Hennesy 2-26-2020$this_page : $root_dir<br>";
 	
 	$controller = new NameController();
-	$controller->render();
+	$controller->run();
 
 ?>

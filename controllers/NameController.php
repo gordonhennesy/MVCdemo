@@ -13,7 +13,7 @@
 			echo "print Name Controller<br>";	
 			$this->view->print();
 		}
-		function render() {
+		function run() {
 		echo "Controller render<br>";
 			$search_name = $_GET['name'];
 			   				echo "search NAME $search_name<br>";
@@ -58,6 +58,8 @@
 //echo "Dup2<br>";
   			}
   			if ($action_insert) {
+  				$this->view->render_insert();
+                return;
   			}
   			if ($action_save) {
 				$save_name_arr = explode('SAVE ',$action_save);
