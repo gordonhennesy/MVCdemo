@@ -83,7 +83,7 @@
 			$sql .= " time_created) ";
 			$sql .= " SELECT '$new_name', ";
 			foreach($values as $name=>$value) {
-				$sql .= " '$value', ";
+				$sql .= " $name,  ";
 			}
 			$sql .= " NOW() ";
 			$sql .= " from ". $this->table ."			 ";

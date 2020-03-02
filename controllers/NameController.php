@@ -50,15 +50,13 @@
 				$duplicate_name_arr = explode('Duplicate ',$action_dup);
 				$duplicate_name = $duplicate_name_arr[1];
 				$duplicate_name = trim($duplicate_name);
- //  				echo "DUP NAME $duplicate_name<br>";
+				//print_r($values);
+   				//echo "DUP NAME $duplicate_name<br>";
    				$old_name =$search_name;
- //  				echo "OLD NAME $old_name<br>";
-   				//$ident = $random();
-   				$new_name = $old_name;// . "$ident";
-   				//$values['time_create']='';
-   				//$values['name']='';
-  // 				print_r($values);
-				$this->model->duplicate($old_name, $new_name, $values);
+   				$new_name = $duplicate_name . " (dup)";
+				$this->model->duplicate($duplicate_name, $new_name, $values);
+				
+				//redirect();
 //echo "Dup2<br>";
   			}
   			if ($action_insert) {
