@@ -1,4 +1,5 @@
 CREATE TABLE statuses (
-	status text,
-	status_number integer
+	status_number integer,
+	process text,	
+	status text
 );
