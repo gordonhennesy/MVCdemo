@@ -13,7 +13,9 @@
 	echo "<HEAD>";
 	echo "<TITLE>MVC Demo Gordon Hennesy 2-26-2020</TITLE>";
 	echo "</HEAD>";
-	echo "MVC Demo Gordon Hennesy 2-26-2020<br>";
+	echo "<center>MVC Demo Gordon Hennesy 2-26-2020</center><br>";
+	echo "<center><a href=statuses.php target='_blank'>Statuses</a></center><br>";
+
 	//echo "MVC Demo Gordon Hennesy 2-26-2020$this_page : $root_dir<br>";
 	
 	$controller = new NameController();
