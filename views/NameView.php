@@ -45,10 +45,6 @@
 				$name_value = $row['name'];
 				//echo "<td>$name_value $edit_name</td>;"
 				if ($name_value == $edit_name) {
- 			//if (( $name_value == $edit_name)  &&
- 			//		$name_value!='' && $edit_name != '') {
-echo "*$name_value* *$edit_name*<br>";
-				//if ($name_value == $edit_name) {
 				echo "<td><input type=submit 
 				name=Update 
 				value=\"Update {$row['name']}\"></td>";
@@ -56,18 +52,7 @@ echo "*$name_value* *$edit_name*<br>";
 				echo "<td><input type=submit 
 				name=Edit 
 				value=\"Edit $name_value\"></td>";
-				//value=\"Edit {$row['name']}\"></td>";
 				}
-// 				if ($edit_name =='' || $name_value != $edit_name) {
-//  				echo "<td><input type=submit 
-//  				name=Edit 
-//  				value=\"Edit $name_value\"></td>";
-//  				//value=\"Edit {$row['name']}\"></td>";
-//  				} else {
-// 				echo "<td><input type=submit 
-// 				name=Update 
-// 				value=\"Update {$row['name']}\"></td>";
-//  				}
 				foreach($row as $name=>$value) {
 					if ($name_value == $edit_name) {
 						echo "<td><input name=$name value='$value'></td>";
