@@ -10,15 +10,10 @@
 		}
 		function get() {
 			$sql = "SELECT * FROM ". $this->table . ";";
-			//echo "sql $sql<br>";
 			$result = pg_query($this->conn, $sql);
-			//echo "$result<br>";
 			$values = array();
-			while( $row = pg_fetch_assoc($result)) {			
-				//$values = array_merge ($values,$row);
-				//$values = array_merge ($values,$row);
+			while( $row = pg_fetch_assoc($result)) {
 				array_push ($values,$row);
-				//print_r($row);
 			}
 			return $values;
 		}

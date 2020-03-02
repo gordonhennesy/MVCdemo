@@ -5,12 +5,10 @@
 	include_once $root_dir . "/models/StatusModel.php";
 	class StatusController extends Controller {
 		function __construct() {
-			//echo "Construct NAME Controller<br>";	
 			$this->view = new StatusView();
 			$this->model = new StatusModel();
 		}
 		function run() {
-			//$this->view->render_search($search_name);
 			$this->view->render();
 		}
 	}

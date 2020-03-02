@@ -3,9 +3,15 @@
 	include_once $root_dir . "/controllers/Controller.php";
 	include_once $root_dir . "/views/NameView.php";
 	include_once $root_dir . "/models/NameModel.php";
+
+	/**
+	 * This is the Controller which implements (CRUD)
+	 * create, read, update, and delete
+	 * using a PostgreSQL database as the data store
+	 */
+
 	class NameController extends Controller {
 		function __construct() {
-			//echo "Construct NAME Controller<br>";	
 			$this->view = new NameView();
 			$this->model = new NameModel();
 		}
@@ -43,8 +49,6 @@
 				$old_name =$search_name;
 				$new_name = $duplicate_name . " (dup)";
 				$this->model->duplicate($duplicate_name, $new_name, $values);
-			
-				//redirect();
 			}
 			if ($action_insert) {
 				$this->view->render_insert();
@@ -75,5 +79,4 @@
 			$this->view->render($search_name, $edit_name, $duplicate_name);
 		}
 	}	
-//echo "HERE Name Controller$root_dir<br>";
 ?>

@@ -1,20 +1,14 @@
 <?PHP
 	$root_dir = dirname($_SERVER['SCRIPT_FILENAME']);
-//   require_once ("Controller.php");
-//echo "$root_dir<br>";
 	include_once $root_dir . "/views/View.php";
 	include_once $root_dir . "/models/NameModel.php";
-//	include_once $root_dir . "/style.css";
 
 	class NameView extends View {
-
 		
 		function __construct() {
 			$this->model = new NameModel();
-			//echo "Construct NAMEVIEW<br>";
 		}
 		function print() {
-			echo "print NAMEVIEW<br>";
 			$this->model->print();	
 		}
 		function render($name, $edit_name, $duplicate_name) {
@@ -24,10 +18,7 @@
 				$search_name = trim($duplicate_name);
 			else
 				$search_name = trim($name);
-			//echo "$edit_name<br>";
-			//echo "$duplicate_name<br>";
 			$values = $this->model->get($search_name);
-			//print_r($values);
 			?>
 			<table align=center>
 			<form name=EditNames border=1>
@@ -45,9 +36,7 @@
 				</tr>
 				<tr>
 				<?php
-				//print_r($row);
 				$name_value = $row['name'];
-				//echo "<td>$name_value $edit_name</td>;"
 				if ($name_value == $edit_name) {
 				echo "<td><input type=submit 
 				name=Update 
@@ -60,10 +49,8 @@
 				foreach($row as $name=>$value) {
 					if ($name_value == $edit_name) {
 						echo "<td><input name=$name value='$value'></td>";
-						//echo "value $value</br>";
 					} else {
 						echo "<td><input name=$name value='$value' disabled=true></td>";
-						//echo "<td>$value</td>";
 					}
 				}
 				echo "<td><input type=submit 
@@ -88,7 +75,6 @@
 				</form>
 				</table>
 			<?php
-			//echo "render<br>";
 			
 		}
 		function render_search($name){
@@ -109,20 +95,15 @@
 				</center>
 
 				<?php
-			//echo "HERE Name NAMEVIEW$search_name<br>";
 		}
 		function render_insert() {
-			//echo "INERSET<br>";
 			$values = $this->model->get();
-			//print_r($values);
-			//echo "get<br>";
 			?>
 			<table align=center>
 			<form name=EditNames border=1>
 			<?php
 				$index = 0;
-			//foreach($values as $row) {
-			$row = $values[0];
+			    $row = $values[0];
 				?>
 				<tr>
 				<th></th>
