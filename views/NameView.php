@@ -18,8 +18,12 @@
 			$this->model->print();	
 		}
 		function render($name, $edit_name, $duplicate_name) {
-			//echo "print NAMEVIEW<br>";
-			$search_name = trim($name);
+			if (trim($edit_name) !='')
+				$search_name = trim($edit_name);
+			else if (trim($duplicate_name) !='')
+				$search_name = trim($duplicate_name);
+			else
+				$search_name = trim($name);
 			//echo "$edit_name<br>";
 			//echo "$duplicate_name<br>";
 			$values = $this->model->get($search_name);
