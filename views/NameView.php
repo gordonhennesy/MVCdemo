@@ -44,9 +44,9 @@
 				//print_r($row);
 				$name_value = $row['name'];
 				//echo "<td>$name_value $edit_name</td>;"
-				//if ($name_value == $edit_name) {
- 				if (( $name_value == $edit_name)  &&
- 					$name_value!='' && $edit_name != '') {
+				if ($name_value == $edit_name) {
+ 			//if (( $name_value == $edit_name)  &&
+ 			//		$name_value!='' && $edit_name != '') {
 echo "*$name_value* *$edit_name*<br>";
 				//if ($name_value == $edit_name) {
 				echo "<td><input type=submit 
@@ -55,8 +55,19 @@ echo "*$name_value* *$edit_name*<br>";
 				} else {
 				echo "<td><input type=submit 
 				name=Edit 
-				value=\"Edit {$row['name']}\"></td>";
+				value=\"Edit $name_value\"></td>";
+				//value=\"Edit {$row['name']}\"></td>";
 				}
+// 				if ($edit_name =='' || $name_value != $edit_name) {
+//  				echo "<td><input type=submit 
+//  				name=Edit 
+//  				value=\"Edit $name_value\"></td>";
+//  				//value=\"Edit {$row['name']}\"></td>";
+//  				} else {
+// 				echo "<td><input type=submit 
+// 				name=Update 
+// 				value=\"Update {$row['name']}\"></td>";
+//  				}
 				foreach($row as $name=>$value) {
 					if ($name_value == $edit_name) {
 						echo "<td><input name=$name value='$value'></td>";
@@ -109,7 +120,7 @@ echo "*$name_value* *$edit_name*<br>";
 				</center>
 
 				<?php
-//			echo "HERE Name NAMEVIEW$root_dir<br>";
+			//echo "HERE Name NAMEVIEW$search_name<br>";
 		}
 		function render_insert() {
 			//echo "INERSET<br>";
