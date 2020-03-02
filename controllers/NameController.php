@@ -27,11 +27,14 @@
 			$action_update = $_GET['Update'];
 			$action_insert = $_GET['Insert'];
 			$action_delete = $_GET['Delete'];
+			$action_reset = $_GET['reset'];
 			$address = $_GET['address'];
-		echo "Action delete $action_delete<br>";
+			$name = $_GET['name'];
+		//echo "Action delete $action_delete<br>";
 
 			$notes = $_GET['notes'];
 			$values = array();
+			$new_name = $name;
 			$values['address']=$address;
 			$values['notes']=$notes;
 //		echo "Controller render3<br>";
@@ -42,7 +45,7 @@
 				$edit_name = $edit_name_arr[1];
 				$edit_name = trim($edit_name);
 			//echo "EDIT NAME $edit_name<br>";
-  			}
+			}
 //		echo "Controller after edit<br>";
 
 			if ($action_dup) {
@@ -50,49 +53,38 @@
 				$duplicate_name_arr = explode('Duplicate ',$action_dup);
 				$duplicate_name = $duplicate_name_arr[1];
 				$duplicate_name = trim($duplicate_name);
-				//print_r($values);
-   				//echo "DUP NAME $duplicate_name<br>";
-   				$old_name =$search_name;
-   				$new_name = $duplicate_name . " (dup)";
+				$old_name =$search_name;
+				$new_name = $duplicate_name . " (dup)";
 				$this->model->duplicate($duplicate_name, $new_name, $values);
-				
+			
 				//redirect();
 //echo "Dup2<br>";
-  			}
-  			if ($action_insert) {
-  			//echo "RENDER insert<br>";
-  				$this->view->render_insert();
-                return;
-  			}
-  			if ($action_save) {
+			}
+			if ($action_insert) {
+				$this->view->render_insert();
+				return;
+			}
+			if ($action_save) {
 				$save_name_arr = explode('SAVE ',$action_save);
 				$save_name = $save_name_arr[1];
 				$save_name = trim($save_name);
-				//echo "Save NAME $save_name<br>";
-		
-				//$this->model->save($search_name,$values);
 				$this->model->insert($search_name,$values);
-  			}
-  			if ($action_update) {
-				$update_name_arr = explode('UPDATE ',$action_update);
+			}
+			if ($action_update) {
+				$update_name_arr = explode('Update ',$action_update);
 				$update_name = $update_name_arr[1];
 				$update_name = trim($update_name);
-				//echo "Save NAME $save_name<br>";
-		
-				$this->model->update($search_name,$values);
-  			}
-   			if ($action_delete) {
-   			//echo "ACTION DETLET ; $action_delete<br>";
+				$values['name']=$name;	
+				$this->model->update($update_name, $new_name, $values);
+			}
+			if ($action_delete) {
 				$delete_name_arr = explode('Delete ',$action_delete);
-				//print_r($delete_name_arr);
 				$delete_name = $delete_name_arr[1];
 				$delete_name = trim($delete_name);
-				//echo "DELETE NAME $delete_name<br>";
-   				$this->model->delete($delete_name);
-   			}
+				$this->model->delete($delete_name);
+			}
 
-  			
-			//echo "render Name Controller $search_name<br>";	
+  			if ($action_reset)	$search_name ='';
 			$this->view->render_search($search_name);
 			$this->view->render($search_name, $edit_name, $duplicate_name);
 		}

@@ -19,12 +19,12 @@
 		}
 		function print() {
 			echo "print Name Model<br>";
-			$result = pg_query($this->conn, "select name, time_created, address, notes from ". $this->table .";");
+			$result = pg_query($this->conn, "select name, time_modified, address, notes from ". $this->table .";");
 			while ($row = pg_fetch_assoc($result)) {
 				foreach($row as $name=>$value) {
 				echo "$name $value<br>";	
 				//echo $row['name'];	
-				//echo $row['time_created'];	
+				//echo $row['time_modified'];	
 				}
 			}
 		}
@@ -62,7 +62,7 @@
 			foreach($values as $name=>$value) {
 				$sql .= " $name, ";
 			}
-			$sql .= "time_created";
+			$sql .= "time_modified";
 			$sql .= ") ";
 			$sql .= "values(";
 			$sql .= " '$insert_name', ";
@@ -80,7 +80,7 @@
 			foreach($values as $name=>$value) {
 				$sql .= " $name, ";
 			}
-			$sql .= " time_created) ";
+			$sql .= " time_modified) ";
 			$sql .= " SELECT '$new_name', ";
 			foreach($values as $name=>$value) {
 				$sql .= " $name,  ";
@@ -100,7 +100,7 @@
 				$sql .= " $name = '$value', ";
 //				echo " $name = '$value', <br>";
 			}
-			$sql .= " time_created = NOW() ";
+			$sql .= " time_modified = NOW() ";
 
 			$sql .= " WHERE name = '$old_name';";
 			//echo "SQL $sql<br>";
@@ -110,16 +110,22 @@
 		/**
 		 * Update (Update of CRUD)
 		 */
-		function update($old_name, $values) {
+		function update($old_name, $new_name, $values) {
 			$sql = "UPDATE ". $this->table ." SET ";
+			$new_name = $values['name'];
+			//print_r($values);
+			if ($old_name=='Gordon+(dup)') {
+				$sql .= " name = '$new_name', ";
+			}
+			
 			foreach($values as $name=>$value) {
 				$sql .= " $name = '$value', ";
 //				echo " $name = '$value', <br>";
 			}
-			$sql .= " time_created = NOW() ";
+			$sql .= " time_modified = NOW() ";
 
 			$sql .= " WHERE name = '$old_name';";
-			//echo "SQL $sql<br>";
+			echo "SQL $sql<br>";
 			
 			$result = pg_query($this->conn, $sql);
 		}
@@ -127,11 +133,8 @@
 		 * Delete (Delete of CRUD)
 		 */
 		function delete($old_name) {
-			echo "DELETE NAME, <br>";
 			$sql = "DELETE FROM  ". $this->table ."";
-			$sql .= " WHERE name = '$old_name';";
-			//echo "SQL $sql<br>";
-			
+			$sql .= " WHERE name = '$old_name';";			
 			$result = pg_query($this->conn, $sql);
 		}
 	}
