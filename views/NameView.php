@@ -44,10 +44,12 @@
 				//print_r($row);
 				$name_value = $row['name'];
 				//echo "<td>$name_value $edit_name</td>;"
-				if ($name_value == $edit_name) {
+				//if ($name_value == $edit_name) {
+				if (strcmp ( $name_value , $edit_name) == 0 ) {
 				echo "<td><input type=submit 
 				name=Update 
 				value=\"Update {$row['name']}\"></td>";
+echo "*$name_value* *$edit_name*<br>";
 				} else {
 				echo "<td><input type=submit 
 				name=Edit 

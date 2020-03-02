@@ -115,7 +115,9 @@
 			$new_name = $values['name'];
 			//print_r($values);
 			if ($old_name=='Gordon+(dup)') {
-				$sql .= " name = '$new_name', ";
+			$pos = stripos ( $old_name , '(dup)');
+			echo "pos $pos<br>";
+			//	$sql .= " name = '$new_name', ";
 			}
 			
 			foreach($values as $name=>$value) {
