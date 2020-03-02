@@ -125,7 +125,7 @@
 			$sql .= " time_modified = NOW() ";
 
 			$sql .= " WHERE name = '$old_name';";
-			echo "SQL $sql<br>";
+			//echo "SQL $sql<br>";
 			
 			$result = pg_query($this->conn, $sql);
 		}
