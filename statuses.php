@@ -13,7 +13,7 @@
 	echo "<HEAD>";
 	echo "<TITLE>MVC Demo Gordon Hennesy 2-26-2020 Status Page</TITLE>";
 	echo "</HEAD>";	
-	//echo "statuses<br>";
+	echo "<center><H4>statuses</H4></center>";
 	$controller = new StatusController();
 	//echo "statuses NEW CONTROLLER<br>";
 	$controller->run();
